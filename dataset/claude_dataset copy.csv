@@ -1,0 +1,151 @@
+audio_id,question,enhanced_transcript,filler_words,filler_count,pause_locations,pause_count,total_pause_time,word_count,speech_rate,fluency_score
+audio_01,"Tell me about yourself","Hi um I am a computer science student [PAUSE:4.0s] I love coding and uh building applications","um,uh",2,"middle",1,4.0,16,90,0.6
+audio_02,"What are your strengths?","I think my strength is problem solving and uh teamwork you know","uh,you know",2,"none",0,0.0,12,135,0.8
+audio_03,"Why should we hire you?","Because [PAUSE:3.0s] I believe my skills um fit the role perfectly","um",1,"beginning",1,3.0,11,105,0.7
+audio_04,"Describe a challenging project","Well uh [PAUSE:2.0s] there was this project where um I had to [PAUSE:1.5s] integrate multiple APIs you know","uh,um,you know",3,"beginning,middle",2,3.5,16,85,0.5
+audio_05,"Where do you see yourself in 5 years?","In five years I see myself as uh a senior developer leading teams and mentoring others","uh",1,"none",0,0.0,16,125,0.85
+audio_06,"What's your biggest weakness?","My biggest weakness is um [PAUSE:2.5s] sometimes I get too focused on details and uh forget the bigger picture","um,uh",2,"middle",1,2.5,19,95,0.65
+audio_07,"Tell me about a time you failed","So there was this um this project where I [PAUSE:3.0s] I underestimated the timeline and uh we missed the deadline","um,uh",2,"middle",1,3.0,18,88,0.6
+audio_08,"How do you handle stress?","I handle stress by you know taking breaks and uh prioritizing tasks effectively","you know,uh",2,"none",0,0.0,13,118,0.75
+audio_09,"What motivates you?","What motivates me is um [PAUSE:2.0s] solving complex problems and seeing the impact of my work","um",1,"middle",1,2.0,16,110,0.7
+audio_10,"Do you have any questions for us?","Yes um I wanted to ask about the team structure and uh the development process you follow","um,uh",2,"none",0,0.0,16,125,0.8
+audio_11,"Explain this gap in your resume","During that time I was [PAUSE:4.0s] I was taking care of family matters but I also um completed online courses","um",1,"middle",1,4.0,18,85,0.6
+audio_12,"What's your salary expectation?","For salary I'm looking for um [PAUSE:3.0s] something in the range of you know market standard for this role","um,you know",2,"middle",1,3.0,18,82,0.55
+audio_13,"How do you stay updated with technology?","I stay updated by reading blogs uh attending conferences and you know working on side projects","uh,you know",2,"none",0,0.0,15,140,0.85
+audio_14,"Describe your ideal work environment","My ideal work environment is um collaborative where people uh support each other and [PAUSE:2.0s] share knowledge","um,uh",2,"middle",1,2.0,16,105,0.7
+audio_15,"What's your experience with teamwork?","I have good experience with teamwork I uh I worked on several group projects and um learned to communicate effectively","uh,um",2,"none",0,0.0,18,130,0.75
+audio_16,"How do you approach problem solving?","When solving problems I first um analyze the requirements then [PAUSE:1.5s] break it down into smaller tasks","um",1,"middle",1,1.5,16,112,0.8
+audio_17,"Tell me about your leadership experience","I led a team of um four developers in my previous internship and uh we delivered the project on time","um,uh",2,"none",0,0.0,17,128,0.8
+audio_18,"What technologies are you passionate about?","I'm really passionate about machine learning and uh [PAUSE:2.0s] artificial intelligence applications","uh",1,"middle",1,2.0,12,108,0.75
+audio_19,"How do you handle criticism?","I handle criticism well because um I see it as an opportunity to you know improve myself","um,you know",2,"none",0,0.0,16,122,0.8
+audio_20,"What makes you different from other candidates?","What makes me different is um [PAUSE:3.0s] my unique combination of technical skills and uh creative problem solving","um,uh",2,"middle",1,3.0,17,95,0.65
+audio_21,"Describe your biggest achievement","My biggest achievement was um developing an application that helped [PAUSE:1.0s] over thousand users manage their tasks","um",1,"middle",1,1.0,16,115,0.8
+audio_22,"How do you prioritize your work?","I prioritize work by first identifying urgent tasks then uh focusing on high-impact activities","uh",1,"none",0,0.0,13,135,0.85
+audio_23,"What's your experience with agile methodology?","I have experience with agile from my previous role where we um used scrum and [PAUSE:2.0s] had daily standups","um",1,"middle",1,2.0,16,108,0.75
+audio_24,"How do you handle tight deadlines?","When facing tight deadlines I um break down the work and uh communicate with stakeholders about priorities","um,uh",2,"none",0,0.0,16,120,0.8
+audio_25,"What's your preferred programming language?","My preferred language is Python because it's um versatile and you know has great libraries for data science","um,you know",2,"none",0,0.0,17,138,0.82
+audio_26,"Tell me about a time you disagreed with your manager","There was a time when I disagreed about the approach and um [PAUSE:3.5s] I presented my alternative solution respectfully","um",1,"middle",1,3.5,16,88,0.6
+audio_27,"How do you learn new technologies?","I learn new technologies by first reading documentation then uh building small projects and you know practicing regularly","uh,you know",2,"none",0,0.0,17,125,0.83
+audio_28,"What's your biggest professional goal?","My biggest goal is to um become a technical architect and uh lead innovative projects","um,uh",2,"none",0,0.0,14,115,0.75
+audio_29,"How do you ensure code quality?","I ensure code quality through um code reviews unit testing and [PAUSE:1.5s] following best practices","um",1,"middle",1,1.5,13,110,0.78
+audio_30,"Why are you leaving your current job?","I'm leaving because I want to um [PAUSE:4.0s] grow my skills in a more challenging environment","um",1,"middle",1,4.0,15,80,0.6
+audio_31,"What are your hobbies?","My hobbies include um reading tech blogs and uh you know building personal projects","um,uh,you know",3,"none",0,0.0,13,105,0.72
+audio_32,"How do you work under pressure?","Under pressure I um [PAUSE:2.5s] stay calm and focus on the most critical tasks first","um",1,"beginning",1,2.5,14,98,0.68
+audio_33,"What's your communication style?","I believe in clear communication um I always try to be direct and uh provide context","um,uh",2,"none",0,0.0,16,118,0.78
+audio_34,"Describe a complex problem you solved","There was this bug that um [PAUSE:3.5s] took me three days to figure out but uh I eventually traced it to a race condition","um,uh",2,"middle",1,3.5,19,92,0.62
+audio_35,"What's your approach to testing?","I approach testing by um writing unit tests first then uh integration tests and you know manual testing","um,uh,you know",3,"none",0,0.0,17,108,0.73
+audio_36,"How do you handle feedback?","I handle feedback well um I listen carefully and uh implement suggestions when appropriate","um,uh",2,"none",0,0.0,14,120,0.8
+audio_37,"What's your experience with databases?","I have experience with SQL databases um PostgreSQL specifically and uh [PAUSE:2.0s] some NoSQL like MongoDB","um,uh",2,"middle",1,2.0,16,102,0.72
+audio_38,"How do you stay organized?","I stay organized using um task management tools and uh keeping detailed documentation","um,uh",2,"none",0,0.0,13,115,0.77
+audio_39,"What's your biggest learning from your last job?","My biggest learning was um [PAUSE:2.8s] the importance of asking questions early rather than uh struggling alone","um,uh",2,"middle",1,2.8,17,95,0.65
+audio_40,"How do you contribute to team success?","I contribute by um sharing knowledge with teammates and uh you know helping with code reviews","um,uh,you know",3,"none",0,0.0,16,112,0.74
+audio_41,"What interests you about this company?","What interests me is um [PAUSE:2.2s] your focus on innovation and uh the collaborative culture","um,uh",2,"middle",1,2.2,14,108,0.71
+audio_42,"How do you handle multiple priorities?","I handle multiple priorities by um making lists and uh [PAUSE:1.8s] focusing on deadlines","um,uh",2,"middle",1,1.8,13,105,0.73
+audio_43,"What's your experience with cloud platforms?","I have experience with AWS um specifically EC2 and uh you know S3 for storage","um,uh,you know",3,"none",0,0.0,14,118,0.76
+audio_44,"Tell me about your problem-solving process","My process starts with um understanding the problem then uh [PAUSE:2.3s] breaking it into smaller parts","um,uh",2,"middle",1,2.3,15,98,0.69
+audio_45,"How do you handle conflicts at work?","I handle conflicts by um listening to all sides and uh finding common ground","um,uh",2,"none",0,0.0,14,122,0.79
+audio_46,"What's your experience with version control?","I use Git daily um for version control and uh you know branching strategies","um,uh,you know",3,"none",0,0.0,12,125,0.75
+audio_47,"Describe your ideal manager","My ideal manager would be um someone who provides clear guidance and uh [PAUSE:3.2s] trusts their team","um,uh",2,"middle",1,3.2,15,92,0.64
+audio_48,"How do you ensure project deadlines are met?","I ensure deadlines by um tracking progress regularly and uh communicating early about risks","um,uh",2,"none",0,0.0,15,128,0.81
+audio_49,"What's your approach to documentation?","I believe documentation is um crucial so I uh [PAUSE:1.5s] write clear comments and maintain wikis","um,uh",2,"middle",1,1.5,15,110,0.77
+audio_50,"How do you handle repetitive tasks?","For repetitive tasks I um try to automate them and uh you know create scripts","um,uh,you know",3,"none",0,0.0,14,115,0.74
+audio_51,"What's your experience with APIs?","I have extensive experience um building REST APIs and uh [PAUSE:2.1s] integrating third-party services","um,uh",2,"middle",1,2.1,14,106,0.72
+audio_52,"How do you approach debugging?","When debugging I um start with logs then uh use debugging tools systematically","um,uh",2,"none",0,0.0,13,120,0.78
+audio_53,"What motivates you in your career?","What motivates me is um [PAUSE:2.7s] continuous learning and uh building solutions that matter","um,uh",2,"middle",1,2.7,14,96,0.67
+audio_54,"How do you handle technical debt?","I handle technical debt by um prioritizing refactoring and uh you know documenting issues","um,uh,you know",3,"none",0,0.0,14,112,0.73
+audio_55,"What's your experience with mobile development?","I have some experience with um React Native and uh [PAUSE:1.9s] basic Android development","um,uh",2,"middle",1,1.9,12,108,0.74
+audio_56,"How do you ensure code security?","I ensure security by um following best practices and uh running security audits regularly","um,uh",2,"none",0,0.0,14,125,0.8
+audio_57,"What's your approach to performance optimization?","My approach involves um profiling first then uh [PAUSE:2.4s] optimizing bottlenecks systematically","um,uh",2,"middle",1,2.4,13,102,0.7
+audio_58,"How do you handle changing requirements?","I handle changes by um staying flexible and uh communicating impact to stakeholders","um,uh",2,"none",0,0.0,13,118,0.78
+audio_59,"What's your experience with containerization?","I work with Docker um for containerization and uh you know Kubernetes for orchestration","um,uh,you know",3,"none",0,0.0,13,122,0.76
+audio_60,"How do you approach code reviews?","I approach reviews by um checking for logic errors and uh [PAUSE:1.7s] suggesting improvements constructively","um,uh",2,"middle",1,1.7,14,108,0.75
+audio_61,"What's your biggest professional challenge?","My biggest challenge has been um [PAUSE:3.4s] learning to balance perfectionism with uh delivery timelines","um,uh",2,"middle",1,3.4,14,86,0.61
+audio_62,"How do you handle client feedback?","I handle feedback by um listening carefully and uh implementing changes systematically","um,uh",2,"none",0,0.0,12,130,0.82
+audio_63,"What's your experience with microservices?","I have experience designing um microservices architecture and uh [PAUSE:2.0s] managing service communication","um,uh",2,"middle",1,2.0,13,105,0.72
+audio_64,"How do you stay motivated during difficult projects?","I stay motivated by um breaking tasks into smaller goals and uh you know celebrating small wins","um,uh,you know",3,"none",0,0.0,16,114,0.74
+audio_65,"What's your approach to learning new frameworks?","I learn frameworks by um reading documentation first then uh building small practice projects","um,uh",2,"none",0,0.0,14,118,0.78
+audio_66,"How do you handle production incidents?","During incidents I um [PAUSE:2.6s] focus on resolving quickly then uh conduct thorough post-mortems","um,uh",2,"middle",1,2.6,13,98,0.68
+audio_67,"What's your experience with data visualization?","I have experience with um D3.js and uh you know creating interactive dashboards","um,uh,you know",3,"none",0,0.0,12,120,0.75
+audio_68,"How do you approach system design?","I approach design by um understanding requirements first then uh [PAUSE:1.8s] considering scalability needs","um,uh",2,"middle",1,1.8,14,108,0.73
+audio_69,"What's your preferred development methodology?","I prefer Agile methodology um because it allows for uh iterative improvement and feedback","um,uh",2,"none",0,0.0,13,125,0.8
+audio_70,"How do you handle technical interviews?","I handle them by um preparing thoroughly and uh you know practicing coding problems","um,uh,you know",3,"none",0,0.0,13,115,0.73
+audio_71,"What's your experience with message queues?","I work with RabbitMQ um for message queuing and uh [PAUSE:2.2s] handling asynchronous processing","um,uh",2,"middle",1,2.2,13,102,0.71
+audio_72,"How do you ensure application reliability?","I ensure reliability through um comprehensive testing and uh monitoring systems proactively","um,uh",2,"none",0,0.0,12,128,0.81
+audio_73,"What's your approach to mentoring junior developers?","My approach involves um pairing with them regularly and uh [PAUSE:2.5s] providing constructive feedback","um,uh",2,"middle",1,2.5,14,96,0.67
+audio_74,"How do you handle legacy code maintenance?","I handle legacy code by um understanding it thoroughly then uh refactoring incrementally","um,uh",2,"none",0,0.0,13,115,0.77
+audio_75,"What's your experience with DevOps practices?","I have experience with um CI/CD pipelines and uh you know infrastructure as code","um,uh,you know",3,"none",0,0.0,13,118,0.74
+audio_76,"How do you approach cross-team collaboration?","I approach collaboration by um establishing clear communication channels and uh [PAUSE:1.9s] defining shared goals","um,uh",2,"middle",1,1.9,15,105,0.72
+audio_77,"What's your strategy for handling technical debt?","My strategy involves um documenting debt items and uh prioritizing based on impact","um,uh",2,"none",0,0.0,13,122,0.79
+audio_78,"How do you ensure data privacy compliance?","I ensure compliance by um following GDPR guidelines and uh [PAUSE:2.3s] implementing proper access controls","um,uh",2,"middle",1,2.3,14,100,0.69
+audio_79,"What's your experience with machine learning deployment?","I have experience deploying um ML models to production and uh monitoring their performance","um,uh",2,"none",0,0.0,14,116,0.77
+audio_80,"How do you handle scope creep in projects?","I handle scope creep by um documenting changes clearly and uh you know discussing impact with stakeholders","um,uh,you know",3,"none",0,0.0,16,110,0.73
+audio_81,"What's your approach to technical writing?","I approach technical writing by um keeping it clear and concise while uh [PAUSE:1.6s] providing necessary details","um,uh",2,"middle",1,1.6,15,112,0.76
+audio_82,"How do you evaluate new technologies?","I evaluate technologies by um researching their benefits and uh testing them in small projects","um,uh",2,"none",0,0.0,15,120,0.78
+audio_83,"What's your experience with distributed systems?","I have experience building um distributed systems and uh [PAUSE:2.7s] handling eventual consistency","um,uh",2,"middle",1,2.7,13,94,0.66
+audio_84,"How do you handle remote work challenges?","I handle remote work by um maintaining regular communication and uh you know setting clear boundaries","um,uh,you know",3,"none",0,0.0,15,114,0.74
+audio_85,"What's your approach to requirements gathering?","My approach involves um asking detailed questions and uh documenting everything thoroughly","um,uh",2,"none",0,0.0,12,125,0.8
+audio_86,"How do you handle integration testing?","I handle integration testing by um creating comprehensive test suites and uh [PAUSE:2.1s] automating the process","um,uh",2,"middle",1,2.1,14,108,0.73
+audio_87,"What's your experience with progressive web apps?","I have experience building um PWAs with service workers and uh offline functionality","um,uh",2,"none",0,0.0,13,118,0.78
+audio_88,"How do you approach database optimization?","I approach optimization by um analyzing query performance and uh you know indexing strategically","um,uh,you know",3,"none",0,0.0,13,115,0.74
+audio_89,"What's your strategy for handling large datasets?","My strategy involves um using appropriate data structures and uh [PAUSE:2.4s] implementing efficient algorithms","um,uh",2,"middle",1,2.4,13,102,0.7
+audio_90,"How do you ensure accessibility in your applications?","I ensure accessibility by um following WCAG guidelines and uh testing with screen readers","um,uh",2,"none",0,0.0,14,122,0.79
+audio_91,"What's your experience with GraphQL?","I have experience with um GraphQL for API development and uh you know query optimization","um,uh,you know",3,"none",0,0.0,13,116,0.75
+audio_92,"How do you handle performance monitoring?","I handle monitoring by um implementing logging systems and uh [PAUSE:1.8s] setting up alerts","um,uh",2,"middle",1,1.8,13,110,0.75
+audio_93,"What's your approach to user experience design?","My approach focuses on um user research first then uh iterative design improvements","um,uh",2,"none",0,0.0,13,118,0.78
+audio_94,"How do you manage technical documentation?","I manage documentation by um keeping it updated regularly and uh you know making it searchable","um,uh,you know",3,"none",0,0.0,14,112,0.73
+audio_95,"What's your experience with load balancing?","I have experience with um load balancers like Nginx and uh [PAUSE:2.0s] implementing failover strategies","um,uh",2,"middle",1,2.0,14,105,0.72
+audio_96,"How do you approach disaster recovery planning?","I approach planning by um identifying critical systems and uh creating backup strategies","um,uh",2,"none",0,0.0,13,120,0.78
+audio_97,"What's your strategy for handling concurrent users?","My strategy involves um implementing proper caching and uh [PAUSE:2.8s] optimizing database queries","um,uh",2,"middle",1,2.8,13,96,0.67
+audio_98,"How do you ensure software maintainability?","I ensure maintainability by um writing clean code and uh you know creating comprehensive tests","um,uh,you know",3,"none",0,0.0,14,115,0.74
+audio_99,"What's your experience with blockchain technology?","I have some experience with um smart contracts and uh [PAUSE:3.1s] distributed ledger concepts","um,uh",2,"middle",1,3.1,13,90,0.63
+audio_100,"How do you handle project estimation?","I handle estimation by um breaking down tasks carefully and uh adding buffer time for unknowns","um,uh",2,"none",0,0.0,15,116,0.77
+audio_101,"What's your biggest career accomplishment?","My biggest accomplishment was um [PAUSE:3.5s] leading a team that delivered a critical system uh ahead of schedule","um,uh",2,"middle",1,3.5,16,88,0.62
+audio_102,"How do you handle work-life balance?","I maintain balance by um setting clear boundaries and uh you know taking regular breaks","um,uh,you know",3,"none",0,0.0,14,118,0.75
+audio_103,"What's your experience with caching strategies?","I implement caching using um Redis for session storage and uh [PAUSE:2.2s] CDN for static assets","um,uh",2,"middle",1,2.2,15,104,0.71
+audio_104,"How do you approach refactoring legacy code?","I approach refactoring by um writing tests first then uh making incremental improvements","um,uh",2,"none",0,0.0,14,120,0.78
+audio_105,"What's your experience with search technologies?","I work with Elasticsearch um for full-text search and uh you know implementing faceted search","um,uh,you know",3,"none",0,0.0,14,115,0.74
+audio_106,"How do you handle authentication and authorization?","I implement auth using um JWT tokens and uh [PAUSE:1.9s] role-based access control","um,uh",2,"middle",1,1.9,13,108,0.74
+audio_107,"What's your approach to internationalization?","My approach involves um separating text into resource files and uh supporting multiple locales","um,uh",2,"none",0,0.0,14,122,0.79
+audio_108,"How do you ensure consistent coding standards?","I ensure consistency by um using linters and formatters and uh [PAUSE:2.1s] conducting regular code reviews","um,uh",2,"middle",1,2.1,15,106,0.72
+audio_109,"What's your experience with real-time applications?","I build real-time apps using um WebSockets and uh you know server-sent events","um,uh,you know",3,"none",0,0.0,12,118,0.75
+audio_110,"How do you handle third-party integrations?","I handle integrations by um reading API documentation thoroughly and uh implementing proper error handling","um,uh",2,"none",0,0.0,16,125,0.8
+audio_111,"What's your strategy for mobile-first design?","My strategy starts with um designing for small screens and uh [PAUSE:2.3s] progressively enhancing for larger ones","um,uh",2,"middle",1,2.3,16,98,0.68
+audio_112,"How do you approach automated testing?","I approach testing by um writing unit tests first then uh integration and end-to-end tests","um,uh",2,"none",0,0.0,15,115,0.77
+audio_113,"What's your experience with content management systems?","I have experience with um WordPress and uh you know custom CMS development","um,uh,you know",3,"none",0,0.0,12,110,0.73
+audio_114,"How do you handle cross-browser compatibility?","I handle compatibility by um testing across browsers and uh [PAUSE:1.7s] using feature detection","um,uh",2,"middle",1,1.7,13,112,0.76
+audio_115,"What's your approach to A/B testing?","My approach involves um defining clear metrics and uh running statistically significant tests","um,uh",2,"none",0,0.0,13,120,0.78
+audio_116,"How do you manage environment configurations?","I manage configs using um environment variables and uh [PAUSE:2.4s] configuration management tools","um,uh",2,"middle",1,2.4,13,102,0.7
+audio_117,"What's your experience with payment processing?","I integrate payment systems um like Stripe and PayPal and uh you know handle PCI compliance","um,uh,you know",3,"none",0,0.0,15,108,0.72
+audio_118,"How do you approach email template design?","I design templates by um keeping them simple and uh ensuring mobile responsiveness","um,uh",2,"none",0,0.0,13,118,0.78
+audio_119,"What's your strategy for handling file uploads?","My strategy includes um validating file types and uh [PAUSE:2.0s] implementing virus scanning","um,uh",2,"middle",1,2.0,13,105,0.72
+audio_120,"How do you ensure SEO optimization?","I optimize for SEO by um using semantic HTML and uh you know implementing proper meta tags","um,uh,you know",3,"none",0,0.0,15,115,0.74
+audio_121,"What's your experience with webscraping?","I do webscraping using um Beautiful Soup and Scrapy and uh [PAUSE:2.6s] respecting robots.txt files","um,uh",2,"middle",1,2.6,14,96,0.67
+audio_122,"How do you handle data serialization?","I handle serialization using um JSON for APIs and uh Protocol Buffers for performance","um,uh",2,"none",0,0.0,14,122,0.79
+audio_123,"What's your approach to responsive design?","My approach uses um CSS Grid and Flexbox and uh you know media queries effectively","um,uh,you know",3,"none",0,0.0,14,112,0.73
+audio_124,"How do you manage technical interviews as an interviewer?","I conduct interviews by um asking practical questions and uh [PAUSE:1.8s] evaluating problem-solving skills","um,uh",2,"middle",1,1.8,14,108,0.74
+audio_125,"What's your experience with NoSQL databases?","I work with MongoDB um for document storage and uh Redis for caching needs","um,uh",2,"none",0,0.0,14,118,0.78
+audio_126,"How do you approach technical debt prioritization?","I prioritize debt by um assessing business impact and uh [PAUSE:2.5s] considering maintenance costs","um,uh",2,"middle",1,2.5,14,98,0.68
+audio_127,"What's your strategy for handling concurrency?","My strategy involves um using appropriate locking mechanisms and uh you know avoiding race conditions","um,uh,you know",3,"none",0,0.0,15,110,0.73
+audio_128,"How do you ensure application scalability?","I ensure scalability by um designing stateless services and uh implementing horizontal scaling","um,uh",2,"none",0,0.0,14,125,0.8
+audio_129,"What's your experience with event-driven architecture?","I design event-driven systems um using message brokers and uh [PAUSE:2.1s] implementing event sourcing","um,uh",2,"middle",1,2.1,14,104,0.71
+audio_130,"How do you handle application deployment?","I handle deployment using um Docker containers and uh automated CI/CD pipelines","um,uh",2,"none",0,0.0,12,120,0.78
+audio_131,"What's your approach to feature flagging?","My approach uses um feature toggles for gradual rollouts and uh you know A/B testing","um,uh,you know",3,"none",0,0.0,14,115,0.74
+audio_132,"How do you manage technical documentation updates?","I manage updates by um establishing review cycles and uh [PAUSE:1.9s] using documentation as code","um,uh",2,"middle",1,1.9,14,108,0.74
+audio_133,"What's your experience with analytics implementation?","I implement analytics using um Google Analytics and uh custom event tracking systems","um,uh",2,"none",0,0.0,13,118,0.78
+audio_134,"How do you approach performance profiling?","I profile performance using um browser dev tools and uh [PAUSE:2.3s] application performance monitoring","um,uh",2,"middle",1,2.3,13,102,0.7
+audio_135,"What's your strategy for handling security vulnerabilities?","My strategy includes um regular security audits and uh you know prompt patching of issues","um,uh,you know",3,"none",0,0.0,14,112,0.73
+audio_136,"How do you ensure data backup and recovery?","I ensure backups by um implementing automated backup systems and uh [PAUSE:2.0s] testing recovery procedures","um,uh",2,"middle",1,2.0,15,105,0.72
+audio_137,"What's your experience with recommendation systems?","I build recommendation systems um using collaborative filtering and uh machine learning algorithms","um,uh",2,"none",0,0.0,13,120,0.78
+audio_138,"How do you handle multi-tenant applications?","I handle multi-tenancy by um implementing proper data isolation and uh [PAUSE:2.4s] resource allocation","um,uh",2,"middle",1,2.4,13,100,0.69
+audio_139,"What's your approach to localization testing?","My approach involves um testing with native speakers and uh you know checking cultural appropriateness","um,uh,you know",3,"none",0,0.0,14,110,0.73
+audio_140,"How do you manage technical team meetings?","I manage meetings by um setting clear agendas and uh [PAUSE:1.6s] keeping discussions focused","um,uh",2,"middle",1,1.6,13,112,0.76
+audio_141,"What's your experience with streaming data processing?","I process streaming data using um Apache Kafka and uh real-time analytics platforms","um,uh",2,"none",0,0.0,13,118,0.78
+audio_142,"How do you handle application monitoring alerts?","I handle alerts by um setting up escalation procedures and uh [PAUSE:2.2s] defining clear response protocols","um,uh",2,"middle",1,2.2,14,104,0.71
+audio_143,"What's your strategy for technical skill development?","My strategy involves um continuous learning through courses and uh you know hands-on projects","um,uh,you know",3,"none",0,0.0,15,115,0.74
+audio_144,"How do you approach system health monitoring?","I monitor system health using um comprehensive dashboards and uh automated health checks","um,uh",2,"none",0,0.0,13,122,0.79
+audio_145,"What's your experience with compliance frameworks?","I work with compliance frameworks um like SOC 2 and uh [PAUSE:2.7s] implementing required controls","um,uh",2,"middle",1,2.7,14,94,0.66
+audio_146,"How do you handle technical presentations?","I handle presentations by um preparing clear slides and uh you know practicing beforehand","um,uh,you know",3,"none",0,0.0,13,110,0.73
+audio_147,"What's your approach to capacity planning?","My approach involves um analyzing usage patterns and uh [PAUSE:1.8s] projecting future needs","um,uh",2,"middle",1,1.8,13,108,0.74
+audio_148,"How do you ensure reliable deployments?","I ensure reliability by um using blue-green deployments and uh comprehensive testing pipelines","um,uh",2,"none",0,0.0,13,125,0.8
+audio_149,"What's your experience with edge computing?","I have experience with um CDN edge functions and uh [PAUSE:2.1s] distributed computing concepts","um,uh",2,"middle",1,2.1,13,105,0.72
+audio_150,"How do you handle technical career growth?","I handle growth by um seeking challenging projects and uh you know learning from senior colleagues","um,uh,you know",3,"none",0,0.0,15,115,0.74
