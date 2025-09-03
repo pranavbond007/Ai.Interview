@@ -15,7 +15,7 @@ def generate_questions():
     prompt = """
    You are an interviewer. Analyze this resume and create 10 interview questions in plain text.
 
-- The first question must always be: "Tell me about yourself, <candidate name>?"
+- The first question must always be “So, <candidate name>, let’s start the interview. Can you tell me a bit about yourself?" 
 - After that, ask 5 resume-based questions covering skills, projects, education, and experience.
 - After the resume-based questions, ask 4 general HR questions such as "Why should we hire you?", "What are your career goals?", or "Describe a time you failed".
 - The order must strictly follow how a real interviewer would ask:
