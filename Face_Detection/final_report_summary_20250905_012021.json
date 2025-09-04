@@ -1,0 +1,13 @@
+{
+    "assessment": "Excellent",
+    "stability_score": "92.8%",
+    "dominant_emotion": "Neutral",
+    "emotion_breakdown_percentage": {
+        "neutral": 48.65,
+        "sad": 34.23,
+        "happy": 17.12
+    },
+    "critical_moments_summary": {
+        "high_stress": 1
+    }
+}
