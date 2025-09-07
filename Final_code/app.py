@@ -631,18 +631,281 @@ result = analyzer.analyze_transcript(transcript)
 
 
 
+# import cv2
+# from fer import FER
+# import datetime
+# import json
+# import pandas as pd
+# from collections import defaultdict, deque
+
+
+# class InterviewEmotionAnalyzer:
+#     """
+#     Analyzes facial emotions in real-time during an interview, providing insights
+#     into the candidate's emotional state, stability, and critical moments.
+#     """
+#     def __init__(self):
+#         self.detector = FER(mtcnn=True)
+#         self.emotion_log = []
+#         self.start_time = None
+#         self.current_session = self._create_new_session()
+        
+#         # Use deques for efficient, fixed-size history tracking
+#         self.emotion_history = deque(maxlen=15)  # Smoothed over last 15 frames
+#         self.neutral_streak = 0
+#         self.low_confidence_streak = 0
+
+#     def _create_new_session(self):
+#         """Initializes a fresh session dictionary."""
+#         return {
+#             'session_id': datetime.datetime.now().strftime("%Y%m%d_%H%M%S"),
+#             'start_time': None,
+#             'end_time': None,
+#             'total_duration': 0,
+#             'emotion_timeline': [],
+#             'emotion_summary': {},
+#             'critical_moments': []
+#         }
+
+#     def start_interview(self):
+#         """Starts or restarts the interview analysis session."""
+#         self.start_time = datetime.datetime.now()
+#         # Reset all tracking variables for a clean start
+#         self.emotion_log = []
+#         self.emotion_history.clear()
+#         self.neutral_streak = 0
+#         self.low_confidence_streak = 0
+#         self.current_session = self._create_new_session()
+#         self.current_session['start_time'] = self.start_time.isoformat()
+#         print(f"🎥 Interview session started: {self.current_session['session_id']}")
+
+#     def analyze_frame(self, frame):
+#         """
+#         Analyzes a single video frame for emotions, logs the data, and detects
+#         critical moments. Returns processed data for display.
+#         """
+#         if self.start_time is None:
+#             return None
+
+#         current_time = datetime.datetime.now()
+#         elapsed_seconds = (current_time - self.start_time).total_seconds()
+        
+#         emotions = self.detector.detect_emotions(frame)
+        
+#         if not emotions:
+#             return None
+
+#         primary_face = emotions[0]
+#         emotion_scores = primary_face["emotions"]
+#         dominant_emotion = max(emotion_scores, key=emotion_scores.get)
+#         confidence = emotion_scores[dominant_emotion]
+        
+#         self.emotion_history.append(dominant_emotion)
+#         smoothed_emotion = max(set(self.emotion_history), key=list(self.emotion_history).count)
+
+#         emotion_entry = {
+#             'timestamp': current_time.isoformat(),
+#             'elapsed_seconds': round(elapsed_seconds, 2),
+#             'dominant_emotion': smoothed_emotion,
+#             'confidence': round(confidence, 3),
+#             'all_emotions': {k: round(v, 3) for k, v in emotion_scores.items()},
+#             'face_box': primary_face["box"]
+#         }
+        
+#         self.emotion_log.append(emotion_entry)
+#         self.detect_critical_moments(emotion_entry)
+#         return emotion_entry
+
+#     def detect_critical_moments(self, emotion_entry):
+#         """
+#         Identifies and flags moments of significant emotional shifts, stress,
+#         or disengagement based on refined heuristics.
+#         """
+#         emotion = emotion_entry['dominant_emotion']
+#         confidence = emotion_entry['confidence']
+#         all_emotions = emotion_entry['all_emotions']
+
+#         if (emotion == 'sad' and confidence > 0.35) or (emotion == 'fear' and confidence > 0.4):
+#             self._log_critical_moment('high_stress', emotion_entry, f"Candidate showed strong signs of {emotion}.")
+
+#         if emotion == 'neutral':
+#             self.neutral_streak += 1
+#             if self.neutral_streak == 30:
+#                 self._log_critical_moment('prolonged_neutrality', emotion_entry, "Candidate showed a prolonged neutral expression.")
+#         else:
+#             self.neutral_streak = 0
+
+#         is_ambiguous = (all_emotions.get('neutral', 0) > 0.2 and (all_emotions.get('sad', 0) + all_emotions.get('fear', 0)) > 0.25)
+#         if confidence < 0.45 and is_ambiguous:
+#             self.low_confidence_streak += 1
+#             if self.low_confidence_streak == 15:
+#                 self._log_critical_moment('low_confidence', emotion_entry, "Candidate appeared uncertain.")
+#         else:
+#             self.low_confidence_streak = 0
+
+#     def _log_critical_moment(self, type, entry, description):
+#         """Helper to append a critical moment to the session log, avoiding rapid duplicates."""
+#         if self.current_session['critical_moments']:
+#             last_moment = self.current_session['critical_moments'][-1]
+#             if last_moment['type'] == type and (entry['elapsed_seconds'] - last_moment['elapsed_seconds']) < 5:
+#                 return
+#         self.current_session['critical_moments'].append({
+#             'type': type, 'timestamp': entry['timestamp'], 'elapsed_seconds': entry['elapsed_seconds'],
+#             'emotion': entry['dominant_emotion'], 'confidence': entry['confidence'], 'description': description
+#         })
+        
+#     def end_interview(self):
+#         """Finalizes the interview session and generates the summary."""
+#         if self.start_time is None:
+#             print("No interview session was started.")
+#             return
+            
+#         end_time = datetime.datetime.now()
+#         self.current_session['end_time'] = end_time.isoformat()
+#         self.current_session['total_duration'] = round((end_time - self.start_time).total_seconds(), 2)
+        
+#         self.generate_emotion_summary()
+        
+#         print(f"\n📊 Interview completed. Duration: {self.current_session['total_duration']:.1f}s")
+
+#     def generate_emotion_summary(self):
+#         """Calculates and stores aggregate emotion statistics for the session."""
+#         if not self.emotion_log:
+#             return
+
+#         df = pd.DataFrame(self.emotion_log)
+#         emotion_percentages = (df['dominant_emotion'].value_counts(normalize=True) * 100).round(2).to_dict()
+#         emotion_changes = (df['dominant_emotion'].shift() != df['dominant_emotion']).sum()
+#         stability_score = max(0, 100 - (emotion_changes / len(df) * 100)) if len(df) > 0 else 100
+        
+#         critical_moment_counts = defaultdict(int)
+#         for moment in self.current_session['critical_moments']:
+#             critical_moment_counts[moment['type']] += 1
+
+#         self.current_session['emotion_summary'] = {
+#             'emotion_percentages': emotion_percentages,
+#             'emotional_stability_score': round(stability_score, 2),
+#             'dominant_emotion_overall': max(emotion_percentages, key=emotion_percentages.get, default='neutral'),
+#             'critical_moment_counts': dict(critical_moment_counts)
+#         }
+
+#     def get_final_report(self):
+#         """Generates a structured, human-readable report from the session data."""
+#         if not self.current_session.get('emotion_summary'):
+#             return {"error": "No summary available."}
+        
+#         summary = self.current_session['emotion_summary']
+#         stability = summary['emotional_stability_score']
+#         stress_total = sum(summary.get('critical_moment_counts', {}).values())
+
+#         if stability >= 75 and stress_total <= 2: assessment = "Excellent"
+#         elif stability >= 55 and stress_total <= 5: assessment = "Good"
+#         elif stability >= 35 or summary.get('critical_moment_counts', {}).get('low_confidence', 0) > 0: assessment = "Fair"
+#         else: assessment = "Needs Attention"
+            
+#         return {
+#             'assessment': assessment,
+#             'stability_score': f"{summary['emotional_stability_score']:.1f}%",
+#             'dominant_emotion': summary['dominant_emotion_overall'].title(),
+#             'emotion_breakdown_percentage': summary['emotion_percentages'],
+#             'critical_moments_summary': dict(summary.get('critical_moment_counts', {}))
+#         }
+
+
+# def run_interview_analysis():
+#     """Main loop to capture video, run analysis, and display results."""
+#     analyzer = InterviewEmotionAnalyzer()
+#     cap = cv2.VideoCapture(0)
+#     if not cap.isOpened():
+#         print("Error: Could not open camera.")
+#         return
+
+#     print("\n🎤 AI Interview Emotion Analysis")
+#     print("Press 's' to START interview.")
+#     print("Press 'q' to END interview and save the report.")
+    
+#     interview_started = False
+    
+#     while True:
+#         ret, frame = cap.read()
+#         if not ret: break
+
+#         key = cv2.waitKey(1) & 0xFF
+        
+#         if key == ord('s'):
+#             analyzer.start_interview()
+#             interview_started = True
+        
+#         elif key == ord('q'):
+#             if interview_started:
+#                 analyzer.end_interview()
+#                 report = analyzer.get_final_report()
+                
+#                 # Create and save the single, concise JSON report
+#                 if 'error' not in report:
+#                     session_id = analyzer.current_session['session_id']
+#                     report_filename = f"final_report_summary_{session_id}.json"
+#                     with open(report_filename, 'w') as f:
+#                         json.dump(report, f, indent=4)
+#                     print(f"📄 Report saved to: {report_filename}")
+
+#                 # Display final report in console
+#                 print("\n" + "="*60)
+#                 print("📊 FINAL INTERVIEW REPORT")
+#                 print("="*60)
+#                 for key, value in report.items():
+#                     if isinstance(value, dict):
+#                         print(f"{key.replace('_', ' ').title()}:")
+#                         for sub_key, sub_value in value.items():
+#                             print(f"  - {sub_key.title()}: {sub_value}")
+#                     else:
+#                         print(f"{key.replace('_', ' ').title()}: {value}")
+#                 print("="*60)
+#             break
+        
+#         if interview_started:
+#             emotion_data = analyzer.analyze_frame(frame)
+#             if emotion_data:
+#                 x, y, w, h = emotion_data['face_box']
+#                 emotion = emotion_data['dominant_emotion']
+#                 confidence = emotion_data['confidence']
+                
+#                 color_map = {'happy': (0, 255, 0), 'sad': (255, 100, 0), 'angry': (0, 0, 255),
+#                              'fear': (128, 0, 128), 'surprise': (0, 255, 255), 'neutral': (220, 220, 220)}
+#                 color = color_map.get(emotion, (255, 255, 255))
+                
+#                 cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+#                 cv2.putText(frame, f"{emotion.upper()} ({confidence:.2f})", 
+#                             (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+
+#         status_text = "RECORDING" if interview_started else "READY: Press 's' to start"
+#         status_color = (0, 0, 255) if interview_started else (0, 255, 0)
+#         cv2.putText(frame, status_text, (10, frame.shape[0] - 15), 
+#                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, status_color, 2)
+        
+#         cv2.imshow('AI Interview Analysis', frame)
+
+#     cap.release()
+#     cv2.destroyAllWindows()
+
+# if __name__ == "__main__":
+#     run_interview_analysis()
+
+
 import cv2
 from fer import FER
 import datetime
 import json
 import pandas as pd
 from collections import defaultdict, deque
+import numpy as np
 
-
-class InterviewEmotionAnalyzer:
+class IntegratedInterviewEmotionAnalyzer:
     """
-    Analyzes facial emotions in real-time during an interview, providing insights
-    into the candidate's emotional state, stability, and critical moments.
+    Comprehensive emotion analyzer that combines:
+    - Original emotion tracking with critical moments
+    - Simple gaze-based confidence (center=high, left/right=low)
+    - Sadness detection with appropriate thresholds
     """
     def __init__(self):
         self.detector = FER(mtcnn=True)
@@ -650,10 +913,15 @@ class InterviewEmotionAnalyzer:
         self.start_time = None
         self.current_session = self._create_new_session()
         
-        # Use deques for efficient, fixed-size history tracking
-        self.emotion_history = deque(maxlen=15)  # Smoothed over last 15 frames
+        # Original tracking variables
+        self.emotion_history = deque(maxlen=15)
         self.neutral_streak = 0
         self.low_confidence_streak = 0
+        
+        # NEW: Gaze tracking variables
+        self.eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+        self.gaze_low_confidence_start = None
+        self.sustained_gaze_low_confidence_count = 0
 
     def _create_new_session(self):
         """Initializes a fresh session dictionary."""
@@ -664,6 +932,7 @@ class InterviewEmotionAnalyzer:
             'total_duration': 0,
             'emotion_timeline': [],
             'emotion_summary': {},
+            'gaze_analysis': {},  # NEW: Gaze analysis
             'critical_moments': []
         }
 
@@ -675,14 +944,67 @@ class InterviewEmotionAnalyzer:
         self.emotion_history.clear()
         self.neutral_streak = 0
         self.low_confidence_streak = 0
+        
+        # NEW: Reset gaze tracking
+        self.gaze_low_confidence_start = None
+        self.sustained_gaze_low_confidence_count = 0
+        
         self.current_session = self._create_new_session()
         self.current_session['start_time'] = self.start_time.isoformat()
-        print(f"🎥 Interview session started: {self.current_session['session_id']}")
+        print(f"🎥 Enhanced Interview Analysis Started: {self.current_session['session_id']}")
+
+    def detect_gaze_direction(self, frame, face_box):
+        """
+        Simple gaze detection: center, left, right
+        Returns: 'center', 'left', 'right'
+        """
+        x, y, w, h = face_box
+        face_roi = frame[y:y+h, x:x+w]
+        face_gray = cv2.cvtColor(face_roi, cv2.COLOR_BGR2GRAY)
+        
+        eyes = self.eye_cascade.detectMultiScale(face_gray, 1.1, 5)
+        
+        if len(eyes) < 2:
+            return 'center'  # Default to center
+        
+        face_center_x = w // 2
+        eyes_sorted = sorted(eyes, key=lambda e: e[2] * e[3], reverse=True)[:2]
+        
+        eye_centers_x = []
+        for (ex, ey, ew, eh) in eyes_sorted:
+            eye_center_x = ex + ew // 2
+            eye_centers_x.append(eye_center_x)
+        
+        if len(eye_centers_x) == 2:
+            avg_eye_x = sum(eye_centers_x) // 2
+            horizontal_deviation = avg_eye_x - face_center_x
+            threshold = w * 0.15  # 15% of face width
+            
+            if abs(horizontal_deviation) <= threshold:
+                return 'center'
+            elif horizontal_deviation < -threshold:
+                return 'left'
+            else:
+                return 'right'
+        
+        return 'center'
+
+    def calculate_gaze_confidence(self, gaze_direction):
+        """
+        Simple gaze-based confidence:
+        - Center = HIGH confidence  
+        - Left/Right = LOW confidence
+        """
+        if gaze_direction == 'center':
+            return 'high'
+        elif gaze_direction in ['left', 'right']:
+            return 'low'
+        else:
+            return 'high'  # Default
 
     def analyze_frame(self, frame):
         """
-        Analyzes a single video frame for emotions, logs the data, and detects
-        critical moments. Returns processed data for display.
+        Enhanced frame analysis combining original emotion tracking with gaze analysis.
         """
         if self.start_time is None:
             return None
@@ -697,11 +1019,29 @@ class InterviewEmotionAnalyzer:
 
         primary_face = emotions[0]
         emotion_scores = primary_face["emotions"]
+        face_box = primary_face["box"]
+        
+        # Original emotion processing
         dominant_emotion = max(emotion_scores, key=emotion_scores.get)
         confidence = emotion_scores[dominant_emotion]
         
         self.emotion_history.append(dominant_emotion)
         smoothed_emotion = max(set(self.emotion_history), key=list(self.emotion_history).count)
+
+        # NEW: Gaze-based confidence
+        gaze_direction = self.detect_gaze_direction(frame, face_box)
+        gaze_confidence_level = self.calculate_gaze_confidence(gaze_direction)
+        
+        # Track sustained gaze-based low confidence
+        is_sustained_gaze_low_confidence = False
+        if gaze_confidence_level == 'low':
+            if self.gaze_low_confidence_start is None:
+                self.gaze_low_confidence_start = current_time
+            elif (current_time - self.gaze_low_confidence_start).total_seconds() > 1.0:
+                is_sustained_gaze_low_confidence = True
+                self.sustained_gaze_low_confidence_count += 1
+        else:
+            self.gaze_low_confidence_start = None
 
         emotion_entry = {
             'timestamp': current_time.isoformat(),
@@ -709,7 +1049,11 @@ class InterviewEmotionAnalyzer:
             'dominant_emotion': smoothed_emotion,
             'confidence': round(confidence, 3),
             'all_emotions': {k: round(v, 3) for k, v in emotion_scores.items()},
-            'face_box': primary_face["box"]
+            'face_box': face_box,
+            # NEW: Gaze data
+            'gaze_direction': gaze_direction,
+            'gaze_confidence_level': gaze_confidence_level,
+            'sustained_gaze_low_confidence': is_sustained_gaze_low_confidence
         }
         
         self.emotion_log.append(emotion_entry)
@@ -718,14 +1062,15 @@ class InterviewEmotionAnalyzer:
 
     def detect_critical_moments(self, emotion_entry):
         """
-        Identifies and flags moments of significant emotional shifts, stress,
-        or disengagement based on refined heuristics.
+        Enhanced critical moment detection including gaze-based issues.
         """
         emotion = emotion_entry['dominant_emotion']
         confidence = emotion_entry['confidence']
         all_emotions = emotion_entry['all_emotions']
+        gaze_direction = emotion_entry['gaze_direction']
 
-        if (emotion == 'sad' and confidence > 0.35) or (emotion == 'fear' and confidence > 0.4):
+        # Original emotion-based detection
+        if (emotion == 'sad' and confidence > 0.40) or (emotion == 'fear' and confidence > 0.4):
             self._log_critical_moment('high_stress', emotion_entry, f"Candidate showed strong signs of {emotion}.")
 
         if emotion == 'neutral':
@@ -735,6 +1080,7 @@ class InterviewEmotionAnalyzer:
         else:
             self.neutral_streak = 0
 
+        # Original low confidence detection
         is_ambiguous = (all_emotions.get('neutral', 0) > 0.2 and (all_emotions.get('sad', 0) + all_emotions.get('fear', 0)) > 0.25)
         if confidence < 0.45 and is_ambiguous:
             self.low_confidence_streak += 1
@@ -742,6 +1088,10 @@ class InterviewEmotionAnalyzer:
                 self._log_critical_moment('low_confidence', emotion_entry, "Candidate appeared uncertain.")
         else:
             self.low_confidence_streak = 0
+
+        # NEW: Gaze-based critical moments
+        if gaze_direction in ['left', 'right'] and emotion_entry['sustained_gaze_low_confidence']:
+            self._log_critical_moment('gaze_avoidance', emotion_entry, f"Candidate avoided eye contact by looking {gaze_direction}.")
 
     def _log_critical_moment(self, type, entry, description):
         """Helper to append a critical moment to the session log, avoiding rapid duplicates."""
@@ -751,11 +1101,13 @@ class InterviewEmotionAnalyzer:
                 return
         self.current_session['critical_moments'].append({
             'type': type, 'timestamp': entry['timestamp'], 'elapsed_seconds': entry['elapsed_seconds'],
-            'emotion': entry['dominant_emotion'], 'confidence': entry['confidence'], 'description': description
+            'emotion': entry['dominant_emotion'], 'confidence': entry['confidence'], 
+            'gaze_direction': entry.get('gaze_direction', 'unknown'),
+            'description': description
         })
         
     def end_interview(self):
-        """Finalizes the interview session and generates the summary."""
+        """Finalizes the interview session and generates comprehensive summary."""
         if self.start_time is None:
             print("No interview session was started.")
             return
@@ -764,71 +1116,113 @@ class InterviewEmotionAnalyzer:
         self.current_session['end_time'] = end_time.isoformat()
         self.current_session['total_duration'] = round((end_time - self.start_time).total_seconds(), 2)
         
-        self.generate_emotion_summary()
+        self.generate_comprehensive_summary()
         
-        print(f"\n📊 Interview completed. Duration: {self.current_session['total_duration']:.1f}s")
+        print(f"\n📊 Enhanced Interview Analysis Complete!")
+        print(f"Duration: {self.current_session['total_duration']:.1f}s")
 
-    def generate_emotion_summary(self):
-        """Calculates and stores aggregate emotion statistics for the session."""
+    def generate_comprehensive_summary(self):
+        """Enhanced summary generation including gaze analysis."""
         if not self.emotion_log:
             return
 
         df = pd.DataFrame(self.emotion_log)
+        
+        # Original emotion analysis
         emotion_percentages = (df['dominant_emotion'].value_counts(normalize=True) * 100).round(2).to_dict()
         emotion_changes = (df['dominant_emotion'].shift() != df['dominant_emotion']).sum()
         stability_score = max(0, 100 - (emotion_changes / len(df) * 100)) if len(df) > 0 else 100
+        
+        # NEW: Gaze analysis
+        gaze_percentages = (df['gaze_direction'].value_counts(normalize=True) * 100).round(2).to_dict()
+        gaze_confidence_percentages = (df['gaze_confidence_level'].value_counts(normalize=True) * 100).round(2).to_dict()
+        engagement_score = gaze_percentages.get('center', 0)
+        
+        # Calculate gaze-based low confidence duration
+        gaze_low_confidence_frames = df['sustained_gaze_low_confidence'].sum()
+        fps_estimate = 30
+        gaze_low_confidence_duration = round(gaze_low_confidence_frames / fps_estimate, 2)
         
         critical_moment_counts = defaultdict(int)
         for moment in self.current_session['critical_moments']:
             critical_moment_counts[moment['type']] += 1
 
+        # Original emotion summary
         self.current_session['emotion_summary'] = {
             'emotion_percentages': emotion_percentages,
             'emotional_stability_score': round(stability_score, 2),
             'dominant_emotion_overall': max(emotion_percentages, key=emotion_percentages.get, default='neutral'),
             'critical_moment_counts': dict(critical_moment_counts)
         }
+        
+        # NEW: Gaze analysis summary
+        self.current_session['gaze_analysis'] = {
+            'gaze_percentages': gaze_percentages,
+            'gaze_confidence_percentages': gaze_confidence_percentages,
+            'engagement_score': round(engagement_score, 1),
+            'looking_at_camera_percentage': gaze_percentages.get('center', 0),
+            'gaze_low_confidence_duration_seconds': gaze_low_confidence_duration
+        }
 
     def get_final_report(self):
-        """Generates a structured, human-readable report from the session data."""
+        """Enhanced final report including gaze analysis."""
         if not self.current_session.get('emotion_summary'):
             return {"error": "No summary available."}
         
         summary = self.current_session['emotion_summary']
+        gaze_summary = self.current_session.get('gaze_analysis', {})
+        
         stability = summary['emotional_stability_score']
         stress_total = sum(summary.get('critical_moment_counts', {}).values())
+        engagement = gaze_summary.get('engagement_score', 0)
 
-        if stability >= 75 and stress_total <= 2: assessment = "Excellent"
-        elif stability >= 55 and stress_total <= 5: assessment = "Good"
-        elif stability >= 35 or summary.get('critical_moment_counts', {}).get('low_confidence', 0) > 0: assessment = "Fair"
-        else: assessment = "Needs Attention"
+        # Enhanced assessment including gaze
+        if stability >= 75 and stress_total <= 2 and engagement >= 70:
+            assessment = "Excellent"
+        elif stability >= 55 and stress_total <= 5 and engagement >= 50:
+            assessment = "Good"
+        elif stability >= 35 and engagement >= 30:
+            assessment = "Fair"
+        else:
+            assessment = "Needs Attention"
             
         return {
             'assessment': assessment,
             'stability_score': f"{summary['emotional_stability_score']:.1f}%",
             'dominant_emotion': summary['dominant_emotion_overall'].title(),
             'emotion_breakdown_percentage': summary['emotion_percentages'],
+            'engagement_score': f"{gaze_summary.get('engagement_score', 0):.1f}%",
+            'looking_at_camera_percentage': f"{gaze_summary.get('looking_at_camera_percentage', 0):.1f}%",
+            'gaze_distribution': gaze_summary.get('gaze_percentages', {}),
+            'gaze_confidence_breakdown': gaze_summary.get('gaze_confidence_percentages', {}),
+            'gaze_low_confidence_duration': f"{gaze_summary.get('gaze_low_confidence_duration_seconds', 0):.1f}s",
             'critical_moments_summary': dict(summary.get('critical_moment_counts', {}))
         }
 
-
-def run_interview_analysis():
-    """Main loop to capture video, run analysis, and display results."""
-    analyzer = InterviewEmotionAnalyzer()
+def run_integrated_interview_analysis():
+    """Main loop combining comprehensive emotion analysis with simple gaze confidence."""
+    analyzer = IntegratedInterviewEmotionAnalyzer()
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Could not open camera.")
         return
 
-    print("\n🎤 AI Interview Emotion Analysis")
-    print("Press 's' to START interview.")
-    print("Press 'q' to END interview and save the report.")
+    print("\n🎤 CLEAN AI Interview Analysis")
+    print("Features:")
+    print("✅ Comprehensive emotion tracking (including sadness >0.40 threshold)")
+    print("✅ Simple gaze-based confidence (center=HIGH, left/right=LOW)")
+    print("✅ Critical moment detection")
+    print("✅ Engagement scoring")
+    print("\nControls:")
+    print("Press 's' to START interview")
+    print("Press 'q' to END interview and generate comprehensive report")
     
     interview_started = False
     
     while True:
         ret, frame = cap.read()
-        if not ret: break
+        if not ret: 
+            break
 
         key = cv2.waitKey(1) & 0xFF
         
@@ -841,56 +1235,46 @@ def run_interview_analysis():
                 analyzer.end_interview()
                 report = analyzer.get_final_report()
                 
-                # Create and save the single, concise JSON report
+                # Save comprehensive report
                 if 'error' not in report:
                     session_id = analyzer.current_session['session_id']
-                    report_filename = f"final_report_summary_{session_id}.json"
+                    report_filename = f"clean_interview_report_{session_id}.json"
                     with open(report_filename, 'w') as f:
                         json.dump(report, f, indent=4)
-                    print(f"📄 Report saved to: {report_filename}")
+                    print(f"📄 Comprehensive report saved: {report_filename}")
 
-                # Display final report in console
-                print("\n" + "="*60)
-                print("📊 FINAL INTERVIEW REPORT")
-                print("="*60)
-                for key, value in report.items():
-                    if isinstance(value, dict):
-                        print(f"{key.replace('_', ' ').title()}:")
-                        for sub_key, sub_value in value.items():
-                            print(f"  - {sub_key.title()}: {sub_value}")
-                    else:
-                        print(f"{key.replace('_', ' ').title()}: {value}")
-                print("="*60)
+                # Display enhanced report
+                print("\n" + "="*70)
+                print("📊 CLEAN INTERVIEW ANALYSIS REPORT")
+                print("="*70)
+                print(f"Overall Assessment: {report.get('assessment', 'N/A')}")
+                print(f"Emotional Stability: {report.get('stability_score', 'N/A')}")
+                print(f"Dominant Emotion: {report.get('dominant_emotion', 'N/A')}")
+                print(f"Engagement Score: {report.get('engagement_score', 'N/A')}")
+                print(f"Looking at Camera: {report.get('looking_at_camera_percentage', 'N/A')}")
+                print(f"Gaze Low Confidence Duration: {report.get('gaze_low_confidence_duration', 'N/A')}")
+                
+                print(f"\n📈 Detailed Breakdowns:")
+                print(f"Emotions: {report.get('emotion_breakdown_percentage', {})}")
+                print(f"Gaze Distribution: {report.get('gaze_distribution', {})}")
+                print(f"Gaze Confidence: {report.get('gaze_confidence_breakdown', {})}")
+                print(f"Critical Moments: {report.get('critical_moments_summary', {})}")
+                print("="*70)
             break
         
         if interview_started:
             emotion_data = analyzer.analyze_frame(frame)
-            if emotion_data:
-                x, y, w, h = emotion_data['face_box']
-                emotion = emotion_data['dominant_emotion']
-                confidence = emotion_data['confidence']
-                
-                color_map = {'happy': (0, 255, 0), 'sad': (255, 100, 0), 'angry': (0, 0, 255),
-                             'fear': (128, 0, 128), 'surprise': (0, 255, 255), 'neutral': (220, 220, 220)}
-                color = color_map.get(emotion, (255, 255, 255))
-                
-                cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-                cv2.putText(frame, f"{emotion.upper()} ({confidence:.2f})", 
-                            (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
-
-        status_text = "RECORDING" if interview_started else "READY: Press 's' to start"
-        status_color = (0, 0, 255) if interview_started else (0, 255, 0)
-        cv2.putText(frame, status_text, (10, frame.shape[0] - 15), 
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, status_color, 2)
+            # REMOVED: All visual overlays (green box, text, status)
+            # The analysis still runs in the background but shows clean video feed
         
-        cv2.imshow('AI Interview Analysis', frame)
+        # REMOVED: Status display text ("RECORDING" etc.)
+        cv2.imshow('Clean AI Interview Analysis', frame)
 
     cap.release()
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    run_interview_analysis()
-
+    run_integrated_interview_analysis()
 
 
 
