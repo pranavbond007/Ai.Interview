@@ -1,0 +1,9 @@
+joblib
+faster_whisper
+pydub
+Flask
+werkzeug
+ffmpeg-python
+
+
+
