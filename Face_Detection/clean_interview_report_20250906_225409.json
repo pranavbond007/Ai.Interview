@@ -1,0 +1,24 @@
+{
+    "assessment": "Excellent",
+    "stability_score": "95.0%",
+    "dominant_emotion": "Happy",
+    "emotion_breakdown_percentage": {
+        "happy": 74.29,
+        "neutral": 19.29,
+        "sad": 6.43
+    },
+    "engagement_score": "99.3%",
+    "looking_at_camera_percentage": "99.3%",
+    "gaze_distribution": {
+        "center": 99.29,
+        "left": 0.71
+    },
+    "gaze_confidence_breakdown": {
+        "high": 99.29,
+        "low": 0.71
+    },
+    "gaze_low_confidence_duration": "0.0s",
+    "critical_moments_summary": {
+        "high_stress": 1
+    }
+}

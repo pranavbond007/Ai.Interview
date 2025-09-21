@@ -1,0 +1,22 @@
+{
+    "assessment": "Excellent",
+    "stability_score": "98.7%",
+    "dominant_emotion": "Neutral",
+    "emotion_breakdown_percentage": {
+        "neutral": 100.0
+    },
+    "engagement_score": "98.7%",
+    "looking_at_camera_percentage": "98.7%",
+    "gaze_distribution": {
+        "center": 98.73,
+        "left": 1.27
+    },
+    "gaze_confidence_breakdown": {
+        "high": 98.73,
+        "low": 1.27
+    },
+    "gaze_low_confidence_duration": "0.0s",
+    "critical_moments_summary": {
+        "prolonged_neutrality": 1
+    }
+}

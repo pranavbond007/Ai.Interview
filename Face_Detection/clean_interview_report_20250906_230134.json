@@ -1,0 +1,19 @@
+{
+    "assessment": "Excellent",
+    "stability_score": "87.8%",
+    "dominant_emotion": "Angry",
+    "emotion_breakdown_percentage": {
+        "angry": 93.88,
+        "happy": 6.12
+    },
+    "engagement_score": "100.0%",
+    "looking_at_camera_percentage": "100.0%",
+    "gaze_distribution": {
+        "center": 100.0
+    },
+    "gaze_confidence_breakdown": {
+        "high": 100.0
+    },
+    "gaze_low_confidence_duration": "0.0s",
+    "critical_moments_summary": {}
+}
