@@ -1,0 +1,12 @@
+{
+    "Question 1": "So, let\u2019s start the interview. Can you tell me a bit about yourself?",
+    "Question 2": "Can you elaborate on your experience as a research intern at IIT Roorkee, focusing on the challenges you faced and how you overcame them?",
+    "Question 3": "Describe your role in the development of the StreeSakhi AI-powered Support & Safety Platform.  What technologies did you utilize, and what were the most significant technical hurdles you encountered?",
+    "Question 4": "Your resume highlights your work on Interview AI. Explain your design choices regarding the speech analysis pipeline and the rationale behind including filler words and silences in your analysis.",
+    "Question 5": "Can you walk me through the architecture of your production-ready Interview AI web application?  What were your considerations for scalability and maintainability?",
+    "Question 6": "Discuss your publication, \"Edge-aware Encoder Fusion for Remote Sensing Image Captioning.\"  What were the key contributions, and what were the limitations of your approach?",
+    "Question 7": "Why should we hire you?",
+    "Question 8": "What are your career goals, both short-term and long-term?",
+    "Question 9": "Describe a time you failed.  What did you learn from that experience?",
+    "Question 10": "What are your salary expectations for this role?"
+}
