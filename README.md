@@ -1,6 +1,6 @@
-# 🤖 AI.Interview - AI-Powered Interview Coach
+# 🤖 MockMind - AI-Powered Interview Coach
 
-**AI.Interview** is a comprehensive full-stack platform designed to help users **master their interview skills** through realistic practice environments. It empowers candidates by:
+**MockMind** is a comprehensive full-stack platform designed to help users **master their interview skills** through realistic practice environments. It empowers candidates by:
 - Generating **tailored technical and behavioral questions** from uploaded resumes
 - Providing **instant feedback** on fluency, grammar, and content relevance
 - Offering **real-time transcription** with fillers and pauses preserved
@@ -65,7 +65,7 @@ AI.Interview/
 
 ## 📋 Prerequisites
 
-Before setting up AI.Interview, ensure you have the following installed on your system:
+Before setting up MockMind, ensure you have the following installed on your system:
 
 ### 1. Git Installation
 **Windows:**
